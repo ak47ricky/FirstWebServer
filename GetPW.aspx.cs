@@ -27,7 +27,7 @@ public partial class GetPW : System.Web.UI.Page
     {
         //Password
 
-        string aSqlStr = string.Format("Select Password FROM UserData WHERE Mail = '{0}'", iaMail);
+        string aSqlStr = string.Format("Select Password FROM UserAccount WHERE Email = '{0}'", iaMail);
 
         string aPassWord = string.Empty;
 
