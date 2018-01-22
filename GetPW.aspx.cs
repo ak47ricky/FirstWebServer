@@ -10,11 +10,11 @@ public partial class GetPW : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        int aMail;
+        string aMail;
 
         try
         {
-            aMail = int.Parse(Request.QueryString["Mail"]);
+            aMail = Request.QueryString["Mail"];
             GetPassWord(aMail);
         }
         catch
@@ -23,7 +23,7 @@ public partial class GetPW : System.Web.UI.Page
         }
     }
 
-    private string GetPassWord(int iaMail)
+    private string GetPassWord(string iaMail)
     {
         //Password
 
