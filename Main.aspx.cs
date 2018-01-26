@@ -24,7 +24,7 @@ public partial class Main : System.Web.UI.Page
 
     private void ContentSQL()
     {
-        SqlConnection vCon = new SqlConnection("server=DESKTOP-NIOHD0A\\SQLEXPRESS;uid=ricky;pwd=5438;database=Test");
+        SqlConnection vCon = new SqlConnection("Data Source=184.168.47.10;Integrated Security=False;User ID=MobileDaddy;PASSWORD=Aa54380438!;Connect Timeout=15;Encrypt=False;Packet Size=4096");
 
         vCon.Open();
 

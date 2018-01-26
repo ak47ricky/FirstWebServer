@@ -33,7 +33,7 @@ public partial class GetPW : System.Web.UI.Page
 
         int aTotalCount = 0;
 
-        using (SqlConnection aCon = new SqlConnection("server=DESKTOP-NIOHD0A\\SQLEXPRESS;uid=ricky;pwd=5438;database=Test"))
+        using (SqlConnection aCon = new SqlConnection("Data Source=184.168.47.10;Integrated Security=False;User ID=MobileDaddy;PASSWORD=Aa54380438!;Connect Timeout=15;Encrypt=False;Packet Size=4096"))
         {
             aCon.Open();
 

@@ -10,13 +10,11 @@ public partial class CreateAccount : System.Web.UI.Page
 {
     public class UserData
     {
-        public string Account;
         public string Password;
         public string Email;
 
         public UserData()
         {
-            Account = string.Empty;
             Password = string.Empty;
             Email = string.Empty;
         }
@@ -29,20 +27,17 @@ public partial class CreateAccount : System.Web.UI.Page
         {
             UserData vData = new UserData();
 
-            vData.Account = Request.QueryString["Account"];
             vData.Password = Request.QueryString["Password"];
             vData.Email = Request.QueryString["Email"];
 
-            if (vData.Account == null || vData.Password == null || vData.Email == null)
+            if (vData.Password == null || vData.Email == null)
             {
                 Response.Write("99");
             }
             else
             {
-                if (CheckAccount(vData) == false)
+                if (CheckEmail(vData) == false)
                     Response.Write("1");
-                else if (CheckEmail(vData) == false)
-                    Response.Write("2");
                 else
                     IntoAccount(vData);
             }
@@ -56,16 +51,26 @@ public partial class CreateAccount : System.Web.UI.Page
     //把帳號寫入SQL
     private void IntoAccount(UserData vData)
     {
-        string vSQLStr = "INSERT INTO UserAccount(Account,Password,Email) VALUES('" + vData.Account + "','" + vData.Password +
+        string vSQLStr = "INSERT INTO UserAccount(Password,Email) VALUES('" + vData.Password +
 "','" + vData.Email + "')";
 
-        using (SqlConnection vCon = new SqlConnection("server=DESKTOP-NIOHD0A\\SQLEXPRESS;uid=ricky;pwd=5438;database = Test"))
+        using (SqlConnection vCon = new SqlConnection("Data Source=184.168.47.10;Integrated Security=False;User ID=MobileDaddy;PASSWORD=Aa54380438!;Connect Timeout=15;Encrypt=False;Packet Size=4096"))
         {
             vCon.Open();
 
             using (SqlCommand cmd = new SqlCommand(vSQLStr, vCon))
             {
-                cmd.ExecuteNonQuery();
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    
+                }
+
+                //cmd.ExecuteNonQuery();
             }
         }
         Response.Write("0");
@@ -76,7 +81,7 @@ public partial class CreateAccount : System.Web.UI.Page
         string vSQLStr = "Select * FROM UserAccount WHERE Email='" + vData.Email + "'";
         bool vFind = false;
 
-        using (SqlConnection vCon = new SqlConnection("server=DESKTOP-NIOHD0A\\SQLEXPRESS;uid=ricky;pwd=5438;database = Test"))
+        using (SqlConnection vCon = new SqlConnection("Data Source=184.168.47.10;Integrated Security=False;User ID=MobileDaddy;PASSWORD=Aa54380438!;database=RickyDataBase;Connect Timeout=15;Encrypt=False;Packet Size=4096"))
         {
             vCon.Open();
 
@@ -100,35 +105,35 @@ public partial class CreateAccount : System.Web.UI.Page
             return true;
     }
 
-    private bool CheckAccount(UserData vData)
-    {
-        string vSQLStr = "Select * FROM UserAccount WHERE Account='" + vData.Account + "'";
+    //private bool CheckAccount(UserData vData)
+    //{
+    //    string vSQLStr = "Select * FROM UserAccount WHERE Account='" + vData.Account + "'";
 
-        bool vFindAccount = false;
+    //    bool vFindAccount = false;
 
-        using (SqlConnection vCon = new SqlConnection("server=DESKTOP-NIOHD0A\\SQLEXPRESS;uid=ricky;pwd=5438;database = Test"))
-        {
-            vCon.Open();
+    //    using (SqlConnection vCon = new SqlConnection("server=DESKTOP-NIOHD0A\\SQLEXPRESS;uid=ricky;pwd=5438;database = Test"))
+    //    {
+    //        vCon.Open();
 
-            using (SqlCommand vCmd = new SqlCommand(vSQLStr, vCon))
-            {
-                SqlDataReader vRd = vCmd.ExecuteReader();
+    //        using (SqlCommand vCmd = new SqlCommand(vSQLStr, vCon))
+    //        {
+    //            SqlDataReader vRd = vCmd.ExecuteReader();
 
-                while (vRd.Read())
-                {
-                    vFindAccount = true;
-                    break;
-                }
+    //            while (vRd.Read())
+    //            {
+    //                vFindAccount = true;
+    //                break;
+    //            }
 
-                vRd.Close();
-            }
+    //            vRd.Close();
+    //        }
 
-            if (vFindAccount == true)
-                return false;
-            else
-                return true;
-        }
+    //        if (vFindAccount == true)
+    //            return false;
+    //        else
+    //            return true;
+    //    }
 
-    }
+    //}
 
 }

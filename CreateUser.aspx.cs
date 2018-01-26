@@ -66,7 +66,7 @@ public partial class CreateUser : System.Web.UI.Page
         int vResult = -1;
         string vAddress = string.Empty;
 
-        using (SqlConnection vCon = new SqlConnection("server=DESKTOP-NIOHD0A\\SQLEXPRESS;uid=ricky;pwd=5438;database=Test"))
+        using (SqlConnection vCon = new SqlConnection("Data Source=184.168.47.10;Integrated Security=False;User ID=MobileRocky;PASSWORD=Aa54380438!;Connect Timeout=15;Encrypt=False;Packet Size=4096"))
         {
             vCon.Open();
             using (SqlCommand cmd = new SqlCommand(vSQLStr, vCon))
@@ -129,7 +129,7 @@ public partial class CreateUser : System.Web.UI.Page
         //是否有找到同樣帳號
         bool vFind = false;
 
-        using (SqlConnection vCon = new SqlConnection("server=DESKTOP-NIOHD0A\\SQLEXPRESS;uid=ricky;pwd=5438;database=Test"))
+        using (SqlConnection vCon = new SqlConnection("Data Source=184.168.47.10;Integrated Security=False;User ID=MobileDaddy;PASSWORD=Aa54380438!;Connect Timeout=15;Encrypt=False;Packet Size=4096"))
         {
             vCon.Open();
 
