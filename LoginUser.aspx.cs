@@ -33,7 +33,7 @@ public partial class LoginUser : System.Web.UI.Page
     private void CheckLogin(string iAcc, string iPass)
     {
         //透過CLINET 傳過來的帳號密碼 來做登入的動作
-        string aSQLStr = "Select * FROM UserData WHERE(Email='" + iAcc + "')";
+        string aSQLStr = "Select * FROM UserAccount WHERE(Email='" + iAcc + "')";
         byte aCount = 0;
 
         using (SqlConnection aCon = new SqlConnection("Data Source=184.168.47.10;Integrated Security=False;User ID=MobileDaddy;PASSWORD=Aa54380438!;Connect Timeout=15;Encrypt=False;Packet Size=4096"))
