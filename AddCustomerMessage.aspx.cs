@@ -10,12 +10,13 @@ public partial class AddCustomerMessage : System.Web.UI.Page
         {
             string vName = Request.QueryString["Name"].ToString();
             string vEmail = Request.QueryString["Email"].ToString();
-            string vContent = Request.QueryString["Content"].ToString();
+            string vPhone = Request.QueryString["Phone"].ToString();
+            string vContent = Request.QueryString["MessageContent"].ToString();
 
             try
             {
-                string vStr = "INSERT INTO CustomerMessage(Name,Email,Content) VALUES('" + vName +
-                                "','" + vEmail + "','" + vContent + " ')";
+                string vStr = "INSERT INTO CustomerMessage(Name,Email,Phone,Message) VALUES(N'" + vName +
+                                "','" + vEmail + "','" + vPhone + "',N'" + vContent + " ')";
 
                 using (SqlConnection vCon = new SqlConnection("Data Source=184.168.47.10;Integrated Security=False;User ID=MobileDaddy;PASSWORD=Aa54380438!;Connect Timeout=15;Encrypt=False;Packet Size=4096"))
                 {
